@@ -1,0 +1,28 @@
+.about-us-section {
+    background-color: #d8d2d2; /* light gray background */
+    padding: 20px;
+    margin-top: 150px;
+    position: relative;
+
+
+    
+  }
+  
+  .info-label {
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  
+  .info-value {
+    margin-bottom: 5px;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
