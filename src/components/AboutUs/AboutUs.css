@@ -1,12 +1,12 @@
 .about-us-section {
-    background-color: #d8d2d2; /* light gray background */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #d8d2d2; 
     padding: 20px;
-    margin-top: 150px;
-    position: relative;
-
-
-    
   }
+
   
   .info-label {
     font-weight: bold;

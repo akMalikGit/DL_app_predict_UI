@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Form } from "react-bootstrap";
 import ShowAlert from "../ShowAlert/ShowAlert";
 import axios from "axios";
+import config from "../../config";
+
 axios.defaults.withCredentials = true;
 
 export default function ColumnSelectionForm({
@@ -45,7 +47,8 @@ export default function ColumnSelectionForm({
     };
     try {
       const response = await axios.post(
-        "http://localhost:5000/train",
+        // "http://localhost:5000/train",
+        `${config.apiUrl}/train`,
         payload,
         {
           headers: { "Contenet-Type": "application/json" },
