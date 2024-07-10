@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import ShowAlert from "../ShowAlert/ShowAlert";
 import axios from "axios";
+import config from "../../config";
+
 axios.defaults.withCredentials = true;
 
 export default function UserInputForm({
@@ -59,7 +61,11 @@ export default function UserInputForm({
       return;
     }
     try {
-      const response = await axios.post("http://localhost:5000/test", formData);
+      const response = await axios.post(
+        // "http://localhost:5000/test",
+        `${config.apiUrl}/test`,
+        formData
+      );
       setIsLoading(false);
       if (response.data.success) {
         setPredictedValue(response.data.message);

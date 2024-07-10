@@ -3,6 +3,8 @@ import { useState, useRef } from "react";
 import { Stack, Button, Container, Row, Spinner } from "react-bootstrap";
 import axios from "axios";
 import ShowAlert from "../ShowAlert/ShowAlert";
+import SampleFiles from "../SampleFiles/SampleFiles";
+import config from "../../config";
 
 axios.defaults.withCredentials = true;
 
@@ -36,7 +38,8 @@ export default function FileUploadForm({ setIsModalVisible, setTotalColumns }) {
     controller.current = new AbortController();
     try {
       const response = await axios.post(
-        "http://localhost:5000/upload",
+        // "http://localhost:5000/upload",
+        `${config.apiUrl}/upload`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -90,7 +93,7 @@ export default function FileUploadForm({ setIsModalVisible, setTotalColumns }) {
         <form onSubmit={handleUpload}>
           <Container className="col-md-8 mx-auto">
             <Row className="mt-5">
-              <h2 className="text-center">Upload CSV or Excel Files</h2>
+              <h2 className="text-center">Upload CSV or Excel File</h2>
             </Row>
             <Row className="mb-5">
               <input
@@ -122,6 +125,7 @@ export default function FileUploadForm({ setIsModalVisible, setTotalColumns }) {
             >
               Cancel
             </Button>
+            <SampleFiles />
           </Stack>
         </form>
       </div>
