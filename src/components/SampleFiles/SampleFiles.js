@@ -7,7 +7,7 @@ export default function SampleFiles() {
     <div className="sample_download_button">
       <Dropdown>
         <Dropdown.Toggle variant="outline-info" id="dropdown-basic">
-          Download test data
+          Download Sample Files
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
