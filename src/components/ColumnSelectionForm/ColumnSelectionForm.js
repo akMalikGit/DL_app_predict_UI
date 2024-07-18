@@ -3,6 +3,7 @@ import { Row, Col, Form } from "react-bootstrap";
 import ShowAlert from "../ShowAlert/ShowAlert";
 import axios from "axios";
 import config from "../../config";
+import "./ColumnSelectionForm.css";
 
 axios.defaults.withCredentials = true;
 
@@ -133,42 +134,42 @@ export default function ColumnSelectionForm({
 
   return (
     <>
+      <Row className="title">
+        <Col>Selcted Columns</Col>
+        <Col>Target Column</Col>
+      </Row>
       <Form onSubmit={handleFormSubmit}>
-        <Row className="mb-3">
-          <Col>
-            <h3>Input Columns</h3>
-            {totalColumns.map((column) => (
-              <div key={column} className="mb-2">
-                <Form.Check
-                  type="switch"
-                  id={`switch-${column}`}
-                  label={column}
-                  checked={selectedCheckboxes.includes(column)}
-                  onChange={() => handleCheckboxChange(column)}
-                  disabled={selectedRadio === column || isLoading}
-                />
-              </div>
-            ))}
-          </Col>
-          <Col>
-            <h3>Target Column</h3>
-            {totalColumns.map((column) => (
-              <div key={column} className="mb-2">
-                <Form.Check
-                  type="radio"
-                  name="targetColumn"
-                  label={column}
-                  id={`radio-${column}`}
-                  checked={selectedRadio === column}
-                  onChange={() => handleRadioChange(column)}
-                  disabled={selectedCheckboxes.includes(column) || isLoading}
-                />
-              </div>
-            ))}
-          </Col>
-        </Row>
+        {totalColumns.map((column) => (
+          <Row className={`selection-form-row ${isLoading ? "disabled" : ""}`}>
+            {/* <Row className="mb-2 selection-form-row"> */}
+            <Col className="selection-form-col">
+              <Form.Check
+                className="form-selection"
+                type="switch"
+                id={`switch-${column}`}
+                label={column}
+                checked={selectedCheckboxes.includes(column)}
+                onChange={() => handleCheckboxChange(column)}
+                disabled={selectedRadio === column || isLoading}
+              />
+            </Col>
 
-        <Row className="mb-3">
+            <Col className="selection-form-col">
+              <Form.Check
+                className="form-selection"
+                type="radio"
+                name="targetColumn"
+                label={column}
+                id={`radio-${column}`}
+                checked={selectedRadio === column}
+                onChange={() => handleRadioChange(column)}
+                disabled={selectedCheckboxes.includes(column) || isLoading}
+              />
+            </Col>
+          </Row>
+        ))}
+
+        <Row className={`selection-form-row ${isLoading ? "disabled" : ""}`}>
           <Col>
             <Form.Group>
               <Form.Check
@@ -182,21 +183,23 @@ export default function ColumnSelectionForm({
           </Col>
         </Row>
 
-        <Row className="mb-3">
+        <Row className="mb-3 selection-form-lr-rate">
           <Col>
             <Form.Group>
               <Form.Label>
                 Learning Rate: {Math.pow(10, rangeValue).toFixed(5)}
               </Form.Label>
-              <Form.Control
-                type="range"
-                min={Math.log10(0.00001)}
-                max={Math.log10(10)}
-                step={(Math.log10(10) - Math.log10(0.00001)) / 100}
-                value={rangeValue}
-                onChange={handleRangeChange}
-                disabled={isLoading}
-              />
+              <div className="selection-form-lr-selection">
+                <Form.Control
+                  type="range"
+                  min={Math.log10(0.00001)}
+                  max={Math.log10(10)}
+                  step={(Math.log10(10) - Math.log10(0.00001)) / 100}
+                  value={rangeValue}
+                  onChange={handleRangeChange}
+                  disabled={isLoading}
+                />
+              </div>
             </Form.Group>
           </Col>
         </Row>

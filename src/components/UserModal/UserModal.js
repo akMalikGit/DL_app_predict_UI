@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, Spinner } from "react-bootstrap";
 import ColumnSelectionForm from "../ColumnSelectionForm/ColumnSelectionForm";
 import UserInputForm from "../UserInputForm/UserInputForm";
+import "./UserModal.css";
 
 export default function UserModal({
   isModalVisible,
@@ -45,11 +46,12 @@ export default function UserModal({
           backdrop="static"
           keyboard={false}
           aria-labelledby="contained-modal-title-vcenter"
+          className="custom-modal"
         >
-          <Modal.Header closeButton>
+          <Modal.Header closeButton className="modal-header-custom">
             <Modal.Title>Predict Value From Data</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="modal-body-custom">
             {isColSelForm ? (
               <ColumnSelectionForm
                 selectedColumns={selectedColumns}

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import ShowAlert from "../ShowAlert/ShowAlert";
+import CustomDropdown from "./CustomDropdown";
 import axios from "axios";
 import config from "../../config";
+import "./UserInputForm.css";
 
 axios.defaults.withCredentials = true;
 
@@ -34,11 +36,11 @@ export default function UserInputForm({
     }
   }, [triggerUserInFormSubmit]);
 
-  const handleInputChange = (e, column) => {
-    setFormData({
-      ...formData,
-      [column]: e.target.value,
-    });
+  const handleInputChange = (e, item) => {
+    const value = e.target.value;
+    setFormData((prevData) => ({ ...prevData, [item]: value }));
+    // console.log("updated form:");
+    // console.log(formData);
   };
   const isValidFormSubmittion = () => {
     const empty = selectedColumns.filter((item) => !formData[item]);
@@ -101,37 +103,25 @@ export default function UserInputForm({
         <Form onSubmit={handleFormSubmit}>
           {selectedColumns.map((item, index) => (
             <Form.Group key={index} className="mb-2">
-              <Form.Label>{item}</Form.Label>
-
-              {selectedValuesUq[item] ? (
-                <Form.Control
-                  as="select"
-                  value={formData[item] || ""}
-                  onChange={(e) => handleInputChange(e, item)}
-                  disabled={isLoading}
-                >
-                  <option value="">Select {item}</option>
-                  {selectedValuesUq[item].map((option, idx) => (
-                    <option key={idx} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </Form.Control>
-              ) : (
-                <Form.Control
-                  type="text"
-                  value={formData[item]}
-                  onChange={(e) => handleInputChange(e, item)}
-                  disabled={isLoading}
-                />
-              )}
+              <CustomDropdown
+                key={index}
+                item={item}
+                formData={formData}
+                handleInputChange={handleInputChange}
+                selectedValuesUq={selectedValuesUq}
+                isLoading={isLoading}
+              />
             </Form.Group>
           ))}
         </Form>
         {predictedValue && (
-          <div>
-            <h3>Preducted {targetColumn} Value: </h3>
-            <h3>{predictedValue}</h3>{" "}
+          <div className="predict-label">
+            <div>
+              <h3>Predicted {targetColumn} Value: </h3>
+            </div>
+            <div className="predict-value">
+              <h3>{predictedValue}</h3>
+            </div>
           </div>
         )}
       </div>

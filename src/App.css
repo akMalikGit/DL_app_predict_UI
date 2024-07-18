@@ -1,5 +1,13 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* background-color: #a9b3c0e7; */
+}
+
+.app-body{
+  flex: 1;
+  padding: 20px;
 }
 
 .App-logo {

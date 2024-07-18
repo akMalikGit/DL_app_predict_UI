@@ -1,8 +1,8 @@
 // import logo from "./logo.svg";
-// import "./App.css";
+import "./App.css";
 import FileUploadForm from "./components/FileUploadForm/FileUploadForm";
 import UserModal from "./components/UserModal/UserModal";
-import AboutUs from "./components/AboutUs/AboutUs";
+import Pagefooter from "./components/Pagefooter/Pagefooter";
 import React, { useState } from "react";
 // import OutlineTypesExample from "./components/OutlineTypesExample";
 // import ColumnSelector from "./test_examples/ColumnSelector";
@@ -14,19 +14,20 @@ function App() {
 
   return (
     <div className="App">
-      <FileUploadForm
-        setIsModalVisible={setIsModalVisible}
-        setTotalColumns={setTotalColumns}
-      />
+      <div className="app-body">
+        <FileUploadForm
+          setIsModalVisible={setIsModalVisible}
+          setTotalColumns={setTotalColumns}
+        />
 
-      <UserModal
-        isModalVisible={isModalVisible}
-        setIsModalVisible={setIsModalVisible}
-        totalColumns={totalColumns}
-      />
-
+        <UserModal
+          isModalVisible={isModalVisible}
+          setIsModalVisible={setIsModalVisible}
+          totalColumns={totalColumns}
+        />
+      </div>
       {/* {console.log(" Viewing isModalVisible: ".concat(String(isModalVisible)))} */}
-      <AboutUs />
+      <Pagefooter />
     </div>
   );
 }
