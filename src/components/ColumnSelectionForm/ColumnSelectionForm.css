@@ -1,0 +1,41 @@
+.selection-form-row, .selection-form-lr-selection, .selection-form-lr-rate {
+  background-color: #343a40;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-size: 18px ;
+  font-weight: 510;
+  color: #adb5bd;
+  transition: background-color 0.3s;
+}
+
+.selection-form-row:hover {
+  background-color: #495057;
+}
+.selection-form-row.disabled:hover {
+  background-color: #343a40;
+}
+
+.selection-form-col{
+  /* border: 1px solid #58602f; */
+  /* background-color: #4f615fd3; */
+  background-color: #343a40;
+  padding: 5px;
+  border-radius: 25px;
+}
+
+.selection-form-lr-selection:hover{
+  background-color: #495057;
+}
+
+.form-selection:hover {
+  font-weight: 650;
+}
+
+.title{
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 22px ;
+  font-weight: bold;
+  color: #adb5bd;
+}

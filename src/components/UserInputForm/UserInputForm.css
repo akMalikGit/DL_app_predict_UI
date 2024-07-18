@@ -1,0 +1,42 @@
+.modal-form-row {
+  background-color: #343a40;
+  padding: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-size: 18px ;
+  font-weight: 510;
+  transition: background-color 0.4s;
+  }
+
+  
+  .modal-form-row:hover {
+    background-color: #495057;
+    font-weight: 650;
+  }
+  
+  .modal-form-row.disabled:hover {
+    background-color: #343a40;
+  }
+
+  .predict-label{
+    /* background-color: #bdaac8; */
+    background-color: #343a40;
+    border-radius: 10px;
+    /* color: #d19d00; */
+    color: #ae8301;
+  }
+
+  .predict-value{
+    /* background-color: #e4e4f6; */
+    background-color: #004360;
+    /* background-color: #bdaac8; */
+    color: #e4e4f6;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+
+
+
+
+  
